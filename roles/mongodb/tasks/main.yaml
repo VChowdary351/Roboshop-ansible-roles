@@ -5,7 +5,6 @@
 
 - name: Install mongodb
   ansible.builtin.package:
-    become: yes
     name: mongodb-org
     state: present
 
