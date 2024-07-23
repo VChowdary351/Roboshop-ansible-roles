@@ -1,5 +1,5 @@
 - name: Installing Roboshop Project
-  hosts: catalogue
+  hosts: cart
   become: yes
   roles:
-   - catalogue
+   - cart
