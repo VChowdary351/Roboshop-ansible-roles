@@ -1,9 +1,10 @@
 - name: Install NodeJS
-  ansible.builtin.import_playbook: nodejs.yaml
-    
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs
 
 - name: Set-up Application
-  ansible.builtin.import_playbook:
+  ansible.builtin.import_role:
     name: common
     tasks_from: app-setup
 
@@ -13,11 +14,11 @@
     chdir: /app
 
 - name: Load-schema
-  ansible.builtin.import_playbook:
+  ansible.builtin.import_role:
     name: common
     tasks_from: load_mongo_schema
 
 - name: systemd service
-  ansible.builtin.import_playbook:
+  ansible.builtin.import_role:
     name: common
     tasks_from: systemd-service
