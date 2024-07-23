@@ -9,5 +9,6 @@
     state: present
 
 - name: load catalogue data
-  ansible.builtin.command: mongo --host mongodb.featureit.online < /app/schema/catalogue.js
+  ansible.builtin.shell:  mongo --host {{mongodb.featureit.online}} --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
+  #ansible.builtin.command: mongo --host mongodb.featureit.online < /app/schema/catalogue.js
   register: products_count # keep double quotes
