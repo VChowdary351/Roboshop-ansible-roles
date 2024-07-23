@@ -4,8 +4,8 @@
     dest: /etc/yum.repos.d/mongodb.repo
 
 - name: Install mongodb client
-  ansible.builtin.yum:
-    name: mongodb-org-shell
+  ansible.builtin.package:
+    name: mongodb-org
     state: present
 
 - name: load catalogue data
