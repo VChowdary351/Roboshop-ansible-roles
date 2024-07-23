@@ -1,5 +1,5 @@
 - name: Installing Roboshop Project
-  hosts: redis
+  hosts: catalogue
   become: yes
   roles:
-   - redis
+   - catalogue
