@@ -8,7 +8,12 @@
     name: mongodb-mongosh
     state: present
 
-- name: load catalogue data
-  ansible.builtin.shell:  mongo --host {{mongodb.featureit.online}} --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
-  #ansible.builtin.command: mongo --host mongodb.featureit.online < /app/schema/catalogue.js
-  register: products_count # keep double quotes
+# - name: load catalogue data
+#   ansible.builtin.shell:  mongo --host {{mongodb.featureit.online}} --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
+#   #ansible.builtin.command: mongo --host mongodb.featureit.online < /app/schema/catalogue.js
+#   register: products_count # keep double quotes
+
+- name: "get the catalogue entries count"
+  ansible.builtin.shell:  mongo --host mongodb.featureit.online --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
+  register: products_count
+  when: component == "catalogue"
