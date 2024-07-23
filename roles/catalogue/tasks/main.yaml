@@ -1,7 +1,6 @@
 - name: Install NodeJS
-  ansible.builtin.import_playbook:
-    name: common
-    tasks_from: nodejs
+  ansible.builtin.import_playbook: nodejs.yaml
+    
 
 - name: Set-up Application
   ansible.builtin.import_playbook:
